@@ -12,6 +12,6 @@ AWSCognito.config.credentials = new AWS.CognitoIdentityCredentials({
 
 //Get UserPool
 var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool({
-    UserPoolId : 'ap-northeast-X',
-    ClientId : 'X'
+    UserPoolId : 'Y',
+    ClientId : 'Z'
 });

@@ -34,26 +34,32 @@
   <script src="js/amazon-cognito-identity.min.js"></script>
   <script src="js/cognito.js"></script>
   <script>
-  <!--//
+
     $('#login-button').click(function() {
+      event.preventDefault();
+
       var authenticationData = {
         Username : $('#email').val(),
         Password : $('#password').val()
       };
       var authenticationDetails = new AWSCognito.CognitoIdentityServiceProvider.AuthenticationDetails(authenticationData);
-        var userData = {
+      var userData = {
         Username : $('#email').val(),
         Pool : userPool
-      };
+      }
+      ;
       var cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userData);
       cognitoUser.authenticateUser(authenticationDetails,
         {
-          onSuccess: function (result) {console.log('access token + ' + result.getAccessToken().getJwtToken());},
+          onSuccess: function (result) {alert('access token + ' + result.getAccessToken().getJwtToken());},
           onFailure: function(err) {alert(err);},
         }
       );
+      
+      $('form').fadeOut(500);
+	    $('.wrapper').addClass('form-success');
     });
-  //-->
+
   </script>
 </body>
 </html>
