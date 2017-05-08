@@ -12,7 +12,7 @@
 		<form class="form">
 			<input type="text" placeholder="E-mail" id="email">
 			<input type="password" placeholder="Verfication code" id="vcode">
-			<button type="submit" id="login-button">Activate</button>
+			<button type="submit" id="activate-button">Activate</button>
 		</form>
 	</div>
 	<ul class="bg-bubbles">
@@ -36,27 +36,23 @@
   <script>  
 
     
-  $('#login-button').click(function() {
+  $('#activate-button').click(function() {
     event.preventDefault();
 
-    var attributeList = [];
-    var dataEmail = {
-        Name : 'email',
-        Value : $('#email').val()
+    var userData = {
+        Username : $('#email').val(),
+        Pool : userPool
     };
-    
-    var attributeEmail = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataEmail);
-    attributeList.push(attributeEmail);
 
-    userPool.signUp($('#email').val(), $('#password').val(), attributeList, null, function(err, result){
+    var cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userData);
+    cognitoUser.confirmRegistration($('#vcode').val(), true, function(err, result) {
         if (err) {
-            console.log(err);
+            alert(err);
             return;
         }
-        cognitoUser = result.user;
-        console.log('user name is ' + cognitoUser.getUsername());
         console.log('call result: ' + result);
     });
+
     $('form').fadeOut(500);
     $('.wrapper').addClass('form-success');  
   });
