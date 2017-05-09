@@ -51,7 +51,9 @@
       var cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userData);
       cognitoUser.authenticateUser(authenticationDetails,
         {
-          onSuccess: function (result) {alert('access token + ' + result.getAccessToken().getJwtToken());},
+          onSuccess: function (result) {alert('access token + ' + result.getAccessToken().getJwtToken());
+              apiToken = result.getAccessToken().getJwtToken();
+          },
           onFailure: function(err) {alert(err);},
         }
       );
