@@ -2,13 +2,13 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>coffee addict</title>
+  <title>coffee addict signup</title>
       <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="wrapper">
 	<div class="container">
-		<h1 id='title' >Sign up</h1>
+		<h1 id='title' >Coffee Addict SignUp</h1>
 		<form class="form">
 			<input type="text" placeholder="E-mail" id="email">
 			<input type="password" placeholder="Password" id="password">
@@ -57,6 +57,7 @@
         console.log('user name is ' + cognitoUser.getUsername());
         console.log('call result: ' + result);
     });
+    $('#title').text('Request submitted. Thank you.');
     $('form').fadeOut(500);
     $('.wrapper').addClass('form-success');  
   });

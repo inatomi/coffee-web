@@ -8,11 +8,12 @@
 <body>
   <div class="wrapper">
 	<div class="container">
-		<h1 id='title' >Activate</h1>
+		<h1 id='title' >Coffee Addict Activation</h1>
 		<form class="form">
 			<input type="text" placeholder="E-mail" id="email">
 			<input type="password" placeholder="Verfication code" id="vcode">
 			<button type="submit" id="activate-button">Activate</button>
+      <div style="margin-top: 20px;" id='login-link'></div>
 		</form>
 	</div>
 	<ul class="bg-bubbles">
@@ -35,7 +36,6 @@
   <script src="js/cognito.js"></script>
   <script>  
 
-    
   $('#activate-button').click(function() {
     event.preventDefault();
 
@@ -54,9 +54,14 @@
     });
 
     $('form').fadeOut(500);
+    $('#title').text('Activation completed.');
+    var shadow = document.querySelector('#login-link').createShadowRoot();
+    shadow.innerHTML = '<a href="login.html">Login</a>';
+    
     $('.wrapper').addClass('form-success');  
   });
 
   </script>
 </body>
 </html>
+
