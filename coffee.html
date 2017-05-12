@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Coffee Addict</title>
-      <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="wrapper">
@@ -29,6 +28,11 @@
     			</li>
   			</ol>
 		</div>
+
+		<div id="app-5">
+  			<p>{{ message }}</p>
+			<button v-on:click="reverseMessage">Reverse Message</button>
+		</div>
 	</div>
 
 	<ul class="bg-bubbles">
@@ -44,10 +48,6 @@
 		<li></li>
 	</ul>
 </div>
-  <script src="js/aws-sdk.min.js"></script>
-  <script src="js/aws-cognito-sdk.min.js"></script>
-  <script src="js/amazon-cognito-identity.min.js"></script>
-  <script src="js/cognito.js"></script>
   <script src="https://unpkg.com/vue"></script>
   <script>
 
@@ -83,6 +83,17 @@ var app4 = new Vue({
   }
 });
 
+var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    message: 'Hello Vue.js!'
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+});
 
   </script>
 </body>
